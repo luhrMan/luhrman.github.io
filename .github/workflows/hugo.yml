@@ -36,6 +36,17 @@ jobs:
           SQYRE_REPO_PATH: ${{ github.workspace }}/sqyre-upstream
         run: ./scripts/sync-from-sqyre.sh
 
+      # Layouts, assets, and static files come from @thulite/* packages (see
+      # config/_default/module.toml). Without node_modules, Hugo emits empty HTML.
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+
+      - name: Install npm dependencies
+        run: npm ci
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
