@@ -1,0 +1,8 @@
+.cache/
+.env
+.hugo_build.lock
+node_modules/
+public/
+resources/
+assets/upstream/
+data/sqyre_meta.yaml

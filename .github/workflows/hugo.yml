@@ -1,0 +1,62 @@
+# Build after syncing README (and related files) from the Sqyre application repo.
+# If your app repo is not named `sqyre` under the same GitHub owner, edit the
+# `repository:` line below or add repo variable `SQYRE_UPSTREAM_REPO` (owner/name).
+#
+# GitHub Pages: Repo → Settings → Pages → Build and deployment → Source: GitHub Actions.
+
+name: Hugo site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository_owner }}/sqyre
+          path: sqyre-upstream
+
+      - name: Sync upstream data into Hugo
+        env:
+          SQYRE_REPO_PATH: ${{ github.workspace }}/sqyre-upstream
+        run: ./scripts/sync-from-sqyre.sh
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.156.0"
+          extended: true
+
+      - name: Build
+        run: hugo --minify -e production
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
