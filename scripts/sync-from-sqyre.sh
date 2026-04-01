@@ -12,7 +12,7 @@ mkdir -p "${ASSETS_UP}"
 if [[ -n "${SQYRE_REPO_PATH:-}" ]]; then
   SRC="$(cd "${SQYRE_REPO_PATH}" && pwd)"
 else
-  URL="${SQYRE_REPO_URL:-https://github.com/your-org/sqyre.git}"
+  URL="${SQYRE_REPO_URL:-https://github.com/luhrMan/sqyre.git}"
   REV="${SQYRE_REPO_REV:-main}"
   rm -rf "${UPSTREAM_DIR}"
   git clone --depth 1 --branch "${REV}" "${URL}" "${UPSTREAM_DIR}"
@@ -40,7 +40,7 @@ if [[ -z "${REPO_URL}" && -n "${SQYRE_REPO_PATH:-}" ]]; then
   REPO_URL="$(git -C "${SRC}" remote get-url origin 2>/dev/null || true)"
 fi
 if [[ -z "${REPO_URL}" ]]; then
-  REPO_URL="${URL:-https://github.com/your-org/sqyre.git}"
+  REPO_URL="${URL:-https://github.com/luhrMan/sqyre.git}"
 fi
 # Normalize .git suffix to a browser-friendly URL when possible
 REPO_URL="${REPO_URL%.git}"
