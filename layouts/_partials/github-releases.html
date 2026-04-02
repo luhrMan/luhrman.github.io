@@ -1,0 +1,121 @@
+{{- $repoPath := site.Params.releasesRepo | default "" -}}
+{{- if eq $repoPath "" -}}
+  {{- $u := "" -}}
+  {{- with site.Data.sqyre_meta -}}
+    {{- $u = .repo_url | default "" -}}
+  {{- end -}}
+  {{- if eq $u "" -}}
+    {{- $u = "https://github.com/sqyre-io/sqyre" -}}
+  {{- end -}}
+  {{- with urls.Parse (strings.TrimSuffix "/" $u) -}}
+    {{- if and .Host (strings.HasSuffix .Host "github.com") -}}
+      {{- $repoPath = strings.TrimPrefix "/" .Path | strings.TrimSuffix "/" -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if eq $repoPath "" -}}
+    {{- $repoPath = "sqyre-io/sqyre" -}}
+  {{- end -}}
+{{- end -}}
+<div
+  id="github-releases"
+  class="github-releases mx-auto"
+  style="max-width: 36rem;"
+  data-repo="{{ $repoPath }}"
+  data-msg-loading="{{ i18n `downloads_loading` }}"
+  data-msg-error="{{ i18n `downloads_error` }}"
+  data-msg-empty="{{ i18n `downloads_empty` }}"
+  data-msg-view="{{ i18n `downloads_view_release` }}"
+  data-msg-no-assets="{{ i18n `downloads_no_assets` }}"
+>
+  <p class="text-muted text-center mb-0" data-role="loading">{{ i18n "downloads_loading" }}</p>
+  <div class="d-none" data-role="content"></div>
+  <p class="text-danger text-center mb-0 d-none" data-role="error"></p>
+</div>
+<script>
+(function () {
+  var root = document.getElementById('github-releases');
+  if (!root || !root.dataset.repo) return;
+
+  function esc(s) {
+    var d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+  }
+
+  function formatBytes(n) {
+    if (n < 1024) return n + ' B';
+    if (n < 1048576) return (n / 1024).toFixed(1) + ' KB';
+    return (n / 1048576).toFixed(1) + ' MB';
+  }
+
+  /** GitHub sometimes lists auto-generated source archives as assets; skip those. */
+  function isSourceArchiveAsset(name) {
+    return /^Source code \((zip|tar\.gz)\)$/i.test(name);
+  }
+
+  var repo = root.dataset.repo;
+  var api = 'https://api.github.com/repos/' + repo + '/releases/latest';
+  var loadingEl = root.querySelector('[data-role="loading"]');
+  var contentEl = root.querySelector('[data-role="content"]');
+  var errorEl = root.querySelector('[data-role="error"]');
+
+  fetch(api, { headers: { Accept: 'application/vnd.github+json' } })
+    .then(function (r) {
+      if (r.status === 404) return null;
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    })
+    .then(function (rel) {
+      if (rel === null) {
+        loadingEl.classList.add('d-none');
+        errorEl.textContent = root.dataset.msgEmpty;
+        errorEl.classList.remove('d-none');
+        return;
+      }
+
+      var releases = [rel];
+      var html = '<ul class="list-unstyled mb-0 github-releases__list">';
+      releases.forEach(function (rel) {
+        var tag = rel.tag_name || rel.name || 'release';
+        var title = rel.name || tag;
+        var relUrl = rel.html_url || '#';
+        var assets = (rel.assets || []).filter(function (a) {
+          return a && a.browser_download_url && a.name && !isSourceArchiveAsset(a.name);
+        });
+
+        html += '<li class="github-releases__item border rounded p-3 mb-3">';
+        html += '<div class="d-flex flex-wrap align-items-baseline justify-content-between gap-2 mb-2">';
+        html += '<strong class="github-releases__title">' + esc(title) + '</strong>';
+        html += '<a class="small text-muted text-nowrap" href="' + esc(relUrl) + '">' + esc(root.dataset.msgView) + '</a>';
+        html += '</div>';
+
+        if (assets.length === 0) {
+          html += '<p class="small text-muted mb-0">' + esc(root.dataset.msgNoAssets) + '</p>';
+        } else {
+          html += '<ul class="list-group list-group-flush github-releases__assets">';
+          assets.forEach(function (a) {
+            var href = a.browser_download_url;
+            var label = a.name;
+            var size = typeof a.size === 'number' ? formatBytes(a.size) : '';
+            html += '<li class="list-group-item px-0 d-flex flex-wrap align-items-center justify-content-between gap-2 border-0 border-top">';
+            html += '<a href="' + esc(href) + '" rel="noopener">' + esc(label) + '</a>';
+            if (size) html += '<span class="small text-muted">' + esc(size) + '</span>';
+            html += '</li>';
+          });
+          html += '</ul>';
+        }
+        html += '</li>';
+      });
+      html += '</ul>';
+
+      loadingEl.classList.add('d-none');
+      contentEl.innerHTML = html;
+      contentEl.classList.remove('d-none');
+    })
+    .catch(function () {
+      loadingEl.classList.add('d-none');
+      errorEl.textContent = root.dataset.msgError;
+      errorEl.classList.remove('d-none');
+    });
+})();
+</script>

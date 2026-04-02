@@ -40,6 +40,15 @@
           <p><a href="{{ "/docs/build/" | relURL }}">Build instructions →</a></p>
         </div>
       </div>
+      <div class="row justify-content-center mt-5 pt-2" id="downloads">
+        <div class="col-12 text-center mb-3">
+          <h2 class="h4">{{ i18n "downloads_heading" }}</h2>
+          <p class="text-muted small mb-0">{{ i18n "downloads_blurb" }}</p>
+        </div>
+        <div class="col-12">
+          {{ partial "github-releases.html" . }}
+        </div>
+      </div>
     </div>
   </section>
 {{ end }}

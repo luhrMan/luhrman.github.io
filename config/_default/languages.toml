@@ -5,7 +5,7 @@
   [en.params]
     languageISO = "EN"
     languageTag = "en-US"
-    footer = 'Macro builder written in Go — <a class="text-muted" href="https://github.com/sqyre-io">Sqyre</a>'
+    footer = 'Macro builder written in Go — <a class="text-muted" href="https://github.com/luhrMan/Sqyre">Sqyre</a>'
     alertText = ""
 
 [de]

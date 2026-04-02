@@ -1,7 +1,10 @@
 # Hugo
 title = "Sqyre — Your Inventory Manager"
+
+# GitHub Releases on the homepage (owner/repo). Leave unset to derive from data/sqyre_meta.yaml repo_url.
+# releasesRepo = "sqyre-io/sqyre"
 description = "Sqyre is a macro builder written in Go. Automate clicks, keys, image search, and OCR with a visual action tree — Fyne, Robotgo, Tesseract, and OpenCV."
-footer = 'Macro builder written in Go — <a class="text-muted" href="https://github.com/sqyre-io">Sqyre</a>.'
+footer = 'Macro builder written in Go — <a class="text-muted" href="https://github.com/luhrMan/Sqyre">Sqyre</a>.'
 images = ["favicon.png"]
 
 # mainSections

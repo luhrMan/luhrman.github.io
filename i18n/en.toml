@@ -1,2 +1,23 @@
 [get_started]
 other = "Demo"
+
+[downloads_heading]
+other = "Downloads"
+
+[downloads_blurb]
+other = "Latest release from GitHub (binary assets only; source archives are not listed)."
+
+[downloads_loading]
+other = "Loading releases…"
+
+[downloads_error]
+other = "Could not load releases. Try again later or open the repository on GitHub."
+
+[downloads_empty]
+other = "No releases published yet."
+
+[downloads_view_release]
+other = "Release notes"
+
+[downloads_no_assets]
+other = "No binary downloads attached to this release."

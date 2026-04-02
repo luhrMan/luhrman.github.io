@@ -12,7 +12,6 @@
         <ul class="list-inline">
           <li class="list-inline-item">{{ site.Params.footer | safeHTML }}</li>
           {{ with site.Data.sqyre_meta -}}
-          <li class="list-inline-item"><small class="text-muted">Docs synced from <a href="{{ .repo_url }}">upstream</a> @ <code>{{ substr .commit 0 7 }}</code> · {{ .synced_at }}</small></li>
           {{- end }}
         </ul>
       </div>

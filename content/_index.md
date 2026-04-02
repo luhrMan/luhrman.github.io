@@ -2,8 +2,8 @@
 title: "Sqyre"
 description: "Sqyre is a macro builder written in Go. Automate clicks, keys, image search, and OCR."
 lead: "No more looking for specific items or organizing by hand. Sqyre will do it all for you."
-date: 2025-03-09T00:00:00Z
-lastmod: 2025-03-09T00:00:00Z
+date: 2025-04-01T00:00:00Z
+lastmod: 2025-04-01T00:00:00Z
 draft: false
 params:
   seo:
