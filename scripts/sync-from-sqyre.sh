@@ -44,7 +44,7 @@ REPO_BLOB="${REPO_URL}/blob/main"
 
 rewrite_for_site() {
   sed \
-    -e 's|docs/images/|/images/sqyre/|g' \
+    -e 's|docs/images/|images/sqyre/|g' \
     -e 's|internal/assets/icons/sqyre.svg|/favicon.svg|g' \
     -e 's|(docs/DEVELOPING.md)|(#developing)|g' \
     -e 's|\[docs/DEVELOPING.md\](docs/DEVELOPING.md)|[Developing](#developing)|g' \
