@@ -1,10 +1,10 @@
 # Hugo
-title = "Sqyre — Your Inventory Manager"
+title = "Sqyre — Desktop macro builder"
 
 # GitHub Releases on the homepage (owner/repo). Leave unset to derive from data/sqyre_meta.yaml repo_url.
-# releasesRepo = "sqyre-io/sqyre"
-description = "Sqyre is a macro builder written in Go. Automate clicks, keys, image search, and OCR with a visual action tree — Fyne, Robotgo, Tesseract, and OpenCV."
-footer = 'Macro builder written in Go — <a class="text-muted" href="https://github.com/luhrMan/Sqyre">Sqyre</a>.'
+# releasesRepo = "luhrMan/sqyre"
+description = "Desktop macro builder written in Go. Automate mouse, keyboard, and screen-aware steps with a visual action tree — Fyne, Robotgo, Tesseract, and OpenCV."
+footer = 'Desktop macro builder written in Go — <a class="text-muted" href="https://github.com/luhrMan/sqyre">Sqyre</a>.'
 images = ["favicon.png"]
 
 # mainSections
@@ -74,6 +74,7 @@ mathEngine = "KaTeX" # "KaTeX" (default) or "MathJax"
 
   # Homepage
   sectionFooter = false # false (default) or true
+  showDemoButton = false # set true when the demo page is ready
 
   # Blog
   relatedPosts = false # false (default) or true
@@ -84,7 +85,7 @@ mathEngine = "KaTeX" # "KaTeX" (default) or "MathJax"
   editPage = false # false (default) or true
   lastMod = false # false (default) or true
   repoHost = "GitHub" # GitHub (default), Gitea, GitLab, Bitbucket, or BitbucketServer
-  docsRepo = "https://github.com/sqyre-io/sqyre-io.github.io"
+  docsRepo = "https://github.com/luhrMan/luhrman.github.io"
   docsRepoBranch = "main" # main (default), master, or <branch name>
   docsRepoSubPath = "" # "" (none, default) or <sub path>
 
@@ -142,7 +143,7 @@ mathEngine = "KaTeX" # "KaTeX" (default) or "MathJax"
     type = "Organization" # Organization (default) or Person
     logo = "favicon.png" # 512×512 from upstream Sqyre icon
     name = "Sqyre" # Name of Organization or Person
-    sameAs = ["https://github.com/sqyre-io"]
+    sameAs = ["https://github.com/luhrMan/sqyre"]
     images = ["favicon.png"] # ["cover.png"] (default)
     article = [] # Article sections
     newsArticle = [] # NewsArticle sections
