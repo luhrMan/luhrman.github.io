@@ -90,6 +90,12 @@
   source = "assets"
   target = "assets"
 
+# Sqyre screenshots live in static/ (synced from the app repo) but must also be
+# available as Hugo resources for @thulite/images render hooks.
+[[mounts]]
+  source = "static/images/sqyre"
+  target = "assets/images/sqyre"
+
 ## static
 [[mounts]]
   source = "node_modules/@thulite/doks-core/static"

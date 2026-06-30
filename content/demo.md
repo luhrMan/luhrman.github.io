@@ -16,22 +16,22 @@ Screenshots and a short GIF from the Sqyre application (synced from the [applica
 
 ## Main window
 
-![Sqyre main window](/images/sqyre/main-window.png)
+![Sqyre main window](images/sqyre/main-window.png)
 
 ## Add action picker
 
 Five columns — **Mouse & Keyboard**, **Detection**, **Variables**, **Loop flow**, and **Miscellaneous**:
 
-![Add action picker](/images/sqyre/add-action-picker.png)
+![Add action picker](images/sqyre/add-action-picker.png)
 
 ## Data editor
 
 Reusable images, masks, points, search areas, and tabular data sources:
 
-![Data editor](/images/sqyre/data-editor.png)
+![Data editor](images/sqyre/data-editor.png)
 
 ## Sample macro
 
-![Building a macro](/images/sqyre/demo-macro.gif)
+![Building a macro](images/sqyre/demo-macro.gif)
 
 For install and build steps, see [Build](/docs/build/). For action types and the tech stack, see [Features](/docs/features/).
