@@ -13,6 +13,10 @@ params:
     description: ""
 ---
 
-The sections below are synced from the **Sqyre** application repository README so install and build steps stay in one place.
+The sections below are synced from the **Sqyre** application repository so install and build steps stay in one place.
 
 {{< upstream_readme >}}
+
+## Developing (extended)
+
+{{< upstream_developing >}}

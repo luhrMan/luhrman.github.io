@@ -1,0 +1,8 @@
+{{- $path := "assets/upstream/DEVELOPING.md" -}}
+{{- if fileExists $path -}}
+<div class="upstream-developing content" id="developing">
+{{ readFile $path | markdownify }}
+</div>
+{{- else -}}
+<p class="notice"><strong>Upstream DEVELOPING.md not present.</strong> Run <code>./scripts/sync-from-sqyre.sh</code> before <code>hugo</code>, or build via CI (see <code>.github/workflows/hugo.yml</code>).</p>
+{{- end -}}

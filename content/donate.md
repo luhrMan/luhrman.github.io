@@ -15,7 +15,7 @@ params:
 Sqyre is free and open source. If it helps you, here are ways to support it:
 
 <ul>
-<li><strong>Star the repo</strong> on <a href="https://github.com/luhrMan/Sqyre">GitHub</a> — it helps others discover the project.</li>
+<li><strong>Star the repo</strong> on <a href="https://github.com/luhrMan/sqyre">GitHub</a> — it helps others discover the project.</li>
 <li><strong>Sponsor</strong> me via
 <ul>
 <li><strong>Monero</strong>:

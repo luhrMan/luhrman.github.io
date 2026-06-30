@@ -1,4 +1,4 @@
-title = "Sqyre — Your Inventory Manager"
+title = "Sqyre — Desktop macro builder"
 baseurl = "http://localhost:1313/"
 disableAliases = true
 disableHugoGeneratorInject = true

@@ -5,7 +5,7 @@
     {{- $u = .repo_url | default "" -}}
   {{- end -}}
   {{- if eq $u "" -}}
-    {{- $u = "https://github.com/sqyre-io/sqyre" -}}
+    {{- $u = "https://github.com/luhrMan/sqyre" -}}
   {{- end -}}
   {{- with urls.Parse (strings.TrimSuffix "/" $u) -}}
     {{- if and .Host (strings.HasSuffix .Host "github.com") -}}
@@ -13,7 +13,7 @@
     {{- end -}}
   {{- end -}}
   {{- if eq $repoPath "" -}}
-    {{- $repoPath = "sqyre-io/sqyre" -}}
+    {{- $repoPath = "luhrMan/sqyre" -}}
   {{- end -}}
 {{- end -}}
 <div

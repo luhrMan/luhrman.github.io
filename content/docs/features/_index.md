@@ -45,14 +45,23 @@ These can contain **child actions** that run when the condition matches (see [Do
 
 - **Set** — Assign a variable.
 - **Calculate** — Evaluate an expression into a variable.
-- **Read from** — Read a line from a data file (iterator resets each macro run at root).
+- **For each row** — Iterate rows from a data table; child actions run once per row with column values bound to variables.
 - **Save to** — Write variable content to a file or the system clipboard.
+
+### Loop flow
+
+- **Loop** — Repeat child actions a fixed number of times (the macro **root** is also a loop).
+- **Break** — Exit the innermost loop container.
+- **Continue** — Skip to the next iteration of the innermost loop container.
 
 ### Miscellaneous
 
 - **Wait** — Pause (milliseconds).
+- **Pause** — Halt until you press a continue hotkey.
 - **Focus window** — Bring a window to the front by title.
 - **Run macro** — Run another saved macro’s root as a nested step.
-- **Loop** — Repeat a sequence a fixed number of times (the macro **root** is also a loop).
+- **If** — Run child actions when configured conditions match (all or any).
+
+**Also in the app:** data editor for reusable images, masks, and tabular sources; macro hotkeys (on press or release); global delay per macro; runtime variable panel while a macro runs.
 
 Combine branches and leaves to automate workflows without writing code.

@@ -11,7 +11,9 @@
     </div>
     <div class="col-lg-9 col-xl-8 text-center">
       <p class="lead">{{ .Params.lead | safeHTML }}</p>
+      {{ if site.Params.doks.showDemoButton -}}
       <a class="btn btn-primary btn-cta rounded-pill btn-lg my-3" href="{{ "/demo/" | relURL }}" role="button">{{ i18n "get_started" }}</a>
+      {{- end }}
       <div class="home-body text-start mx-auto" style="max-width: 32rem;">
         {{ .Content }}
       </div>
@@ -31,12 +33,12 @@
       <div class="row justify-content-center text-center">
         <div class="col-lg-5">
           <h2 class="h4">Features</h2>
-          <p>Fyne GUI, Robotgo, OCR, and OpenCV in a tree-based editor.</p>
+          <p>Mouse, keyboard, and screen-aware steps in a visual tree — loops, detection, and variables.</p>
           <p><a href="{{ "/docs/features/" | relURL }}">Explore features →</a></p>
         </div>
         <div class="col-lg-5">
           <h2 class="h4">Build</h2>
-          <p>Compile from source; build docs stay in sync with the app README.</p>
+          <p>Linux and Windows binaries; build docs stay in sync with the app repo.</p>
           <p><a href="{{ "/docs/build/" | relURL }}">Build instructions →</a></p>
         </div>
       </div>
