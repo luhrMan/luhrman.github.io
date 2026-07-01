@@ -30,16 +30,31 @@
   {{ end -}}
   <section class="section section-md section-features">
     <div class="container">
-      <div class="row justify-content-center text-center">
-        <div class="col-lg-5">
-          <h2 class="h4">Features</h2>
-          <p>Mouse, keyboard, and screen-aware steps in a visual tree — loops, detection, and variables.</p>
-          <p><a href="{{ "/docs/features/" | relURL }}">Explore features →</a></p>
+      <div class="row justify-content-center text-center g-4">
+        <div class="col-md-6 col-lg-3">
+          <h2 class="h4">Visual editor</h2>
+          <p class="mb-0">Tree of actions with hotkeys, global delay, and a live variable panel.</p>
         </div>
-        <div class="col-lg-5">
-          <h2 class="h4">Build</h2>
-          <p>Linux and Windows binaries; build docs stay in sync with the app repo.</p>
-          <p><a href="{{ "/docs/build/" | relURL }}">Build instructions →</a></p>
+        <div class="col-md-6 col-lg-3">
+          <h2 class="h4">Screen-aware</h2>
+          <p class="mb-0">Image search, OCR, find pixel, and conditional <strong>if</strong> branches.</p>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <h2 class="h4">Flow control</h2>
+          <p class="mb-0">Loops, for each row, break, continue, pause, and nested run macro.</p>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <h2 class="h4">Local &amp; private</h2>
+          <p class="mb-0">Open source; macros and data live under <code>~/.sqyre/</code> on Linux and Windows.</p>
+        </div>
+      </div>
+      <div class="row justify-content-center text-center mt-4">
+        <div class="col-auto">
+          <a href="{{ "/docs/features/" | relURL }}">Explore features →</a>
+          <span class="text-muted mx-2">·</span>
+          <a href="{{ "/demo/" | relURL }}">See demo →</a>
+          <span class="text-muted mx-2">·</span>
+          <a href="{{ "/docs/build/" | relURL }}">Build instructions →</a>
         </div>
       </div>
       <div class="row justify-content-center mt-5 pt-2" id="downloads">
