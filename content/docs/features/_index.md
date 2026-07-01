@@ -1,7 +1,8 @@
 ---
 title: "Features"
-description: "Tech stack and action types for the Sqyre macro builder."
+description: "Action types, screenshots, and tech stack for the Sqyre macro builder."
 date: 2025-03-09
+lastmod: 2026-06-30T00:00:00Z
 draft: false
 weight: 10
 toc: true
@@ -13,18 +14,13 @@ params:
     description: ""
 ---
 
-Sqyre is built with a small set of libraries and exposes them through a **tree-based macro editor**. For **how to use the window** (toolbar, add/edit rules, copy/paste, execution), see the [Docs](/docs/) landing page.
+The overview and action summary below are synced from the **Sqyre** application repository.
 
-## Tech stack
+{{< upstream_readme_features >}}
 
-- **Fyne** — Cross-platform GUI
-- **Robotgo** — Mouse and keyboard automation
-- **Gosseract (Tesseract)** — OCR
-- **GoCV (OpenCV)** — Computer vision (image search pipeline)
+For **how to use the window** (toolbar, add/edit rules, copy/paste, execution), see [Docs](/docs/). For a walkthrough with GIFs, see [Demo](/demo/).
 
-## Action types (current app)
-
-Actions are grouped in the UI like this:
+## Action details
 
 ### Mouse & keyboard
 
@@ -62,6 +58,26 @@ These can contain **child actions** that run when the condition matches (see [Do
 - **Run macro** — Run another saved macro’s root as a nested step.
 - **If** — Run child actions when configured conditions match (all or any).
 
-**Also in the app:** data editor for reusable images, masks, and tabular sources; macro hotkeys (on press or release); global delay per macro; runtime variable panel while a macro runs.
+## Screenshots
 
-Combine branches and leaves to automate workflows without writing code.
+Synced from the [application repo](https://github.com/luhrMan/sqyre).
+
+### Main window
+
+![Sqyre main window](images/sqyre/main-window.png)
+
+### Add action picker
+
+Five columns — **Mouse & Keyboard**, **Detection**, **Variables**, **Loop flow**, and **Miscellaneous**:
+
+![Add action picker](images/sqyre/add-action-picker.png)
+
+### Action dialogs
+
+| Category | |
+|----------|---|
+| Mouse & keyboard | [Move](images/sqyre/action-dialog-move.png) · [Click](images/sqyre/action-dialog-click.png) · [Key](images/sqyre/action-dialog-key.png) · [Type](images/sqyre/action-dialog-type.png) |
+| Detection | [Image search](images/sqyre/action-dialog-imagesearch.png) · [OCR](images/sqyre/action-dialog-ocr.png) · [Find pixel](images/sqyre/action-dialog-findpixel.png) |
+| Variables | [Set](images/sqyre/action-dialog-setvariable.png) · [Calculate](images/sqyre/action-dialog-calculate.png) · [For each row](images/sqyre/action-dialog-foreachrow.png) · [Save to](images/sqyre/action-dialog-savevariable.png) |
+| Loop flow | [Loop](images/sqyre/action-dialog-loop.png) |
+| Miscellaneous | [Wait](images/sqyre/action-dialog-wait.png) · [Focus window](images/sqyre/action-dialog-focuswindow.png) · [Run macro](images/sqyre/action-dialog-runmacro.png) |
