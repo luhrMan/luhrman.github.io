@@ -1,0 +1,8 @@
+{{- $path := "assets/upstream/README.build.md" -}}
+{{- if fileExists $path -}}
+<div class="upstream-readme-build content">
+{{ readFile $path | markdownify }}
+</div>
+{{- else -}}
+<p class="notice"><strong>Upstream build README not present.</strong> Run <code>./scripts/sync-from-sqyre.sh</code> before <code>hugo</code>, or build via CI (see <code>.github/workflows/hugo.yml</code>).</p>
+{{- end -}}
