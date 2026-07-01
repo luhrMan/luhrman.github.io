@@ -48,10 +48,41 @@ rewrite_for_site() {
     -e 's|internal/assets/icons/sqyre.svg|/favicon.svg|g' \
     -e 's|(docs/DEVELOPING.md)|(#developing)|g' \
     -e 's|\[docs/DEVELOPING.md\](docs/DEVELOPING.md)|[Developing](#developing)|g' \
+    -e 's|\[docs/DEVELOPING.md\](#developing)|[Developing](#developing)|g' \
+    -e "s|(docs/README.md)|(${REPO_BLOB}/docs/README.md)|g" \
     -e "s|(\.\./|(${REPO_BLOB}/|g"
 }
 
-rewrite_for_site <"${SRC}/README.md" >"${ASSETS_UP}/README.md"
+rewrite_for_features() {
+  rewrite_for_site | sed -e 's|\[Developing\](#developing)|[Developing](/docs/build/#developing)|g'
+}
+
+extract_readme_section() {
+  local file="$1"
+  local heading="$2"
+  awk -v h="## ${heading}" '
+    $0 == h { p = 1; print; next }
+    p && /^## / { exit }
+    p { print }
+  ' "${file}"
+}
+
+README_RAW="${SRC}/README.md"
+rewrite_for_site <"${README_RAW}" >"${ASSETS_UP}/README.md"
+
+{
+  extract_readme_section "${README_RAW}" "Build (quick start)"
+  echo ""
+  echo "## Run"
+  echo ""
+  echo "After building, launch \`./bin/sqyre\` (Linux) or the Windows binary from \`bin/windows-amd64/\`. For creating and running macros, see [Docs](/docs/)."
+} | rewrite_for_site >"${ASSETS_UP}/README.build.md"
+
+{
+  extract_readme_section "${README_RAW}" "What it does" | sed -e '/^---$/d'
+  echo ""
+  extract_readme_section "${README_RAW}" "Actions" | sed -e '/^---$/d'
+} | rewrite_for_features >"${ASSETS_UP}/README.features.md"
 
 if [[ -f "${SRC}/docs/DEVELOPING.md" ]]; then
   rewrite_for_site <"${SRC}/docs/DEVELOPING.md" >"${ASSETS_UP}/DEVELOPING.md"
