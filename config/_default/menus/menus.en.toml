@@ -4,6 +4,11 @@
   weight = 10
 
 [[main]]
+  name = "Demo"
+  url = "/wasm/"
+  weight = 12
+
+[[main]]
   name = "Downloads"
   url = "/#downloads"
   weight = 15
