@@ -36,6 +36,9 @@ jobs:
           SQYRE_REPO_PATH: ${{ github.workspace }}/sqyre-upstream
         run: ./scripts/sync-from-sqyre.sh
 
+      - name: Sync WASM demo from GitHub Releases
+        run: ./scripts/sync-wasm-demo.sh
+
       # Layouts, assets, and static files come from @thulite/* packages (see
       # config/_default/module.toml). Without node_modules, Hugo emits empty HTML.
       - name: Setup Node
