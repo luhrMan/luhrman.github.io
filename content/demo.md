@@ -1,6 +1,6 @@
 ---
 title: "Demo"
-description: "Try the Sqyre browser editor, or browse screenshots of the main window, action picker, data editor, and a sample macro."
+description: "Try the Sqyre browser editor, or browse screenshots of the main window, action picker, and data editor."
 date: 2026-04-01T00:00:00Z
 lastmod: 2026-07-20T00:00:00Z
 draft: false
@@ -16,7 +16,7 @@ The **browser demo** is the WASM GUI editor published with each [Sqyre release](
 
 **[Launch the WASM demo →](/wasm/)**
 
-Screenshots and a short GIF from the Sqyre application (synced from the [application repo](https://github.com/luhrMan/sqyre)):
+Screenshots from the Sqyre application (synced from the [application repo](https://github.com/luhrMan/sqyre)):
 
 ## Main window
 
@@ -33,9 +33,5 @@ Five columns — **Mouse & Keyboard**, **Detection**, **Variables**, **Loop flow
 Reusable images, masks, points, search areas, and tabular data sources:
 
 ![Data editor](images/sqyre/data-editor.png)
-
-## Sample macro
-
-![Building a macro](images/sqyre/demo-macro.gif)
 
 For install and build steps, see [Build](/docs/build/). For action types and the tech stack, see [Features](/docs/features/).

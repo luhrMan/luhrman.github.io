@@ -2,7 +2,7 @@
 title: "Features"
 description: "Action types, screenshots, and tech stack for the Sqyre macro builder."
 date: 2025-03-09
-lastmod: 2026-06-30T00:00:00Z
+lastmod: 2026-07-20T00:00:00Z
 draft: false
 weight: 10
 toc: true
@@ -18,7 +18,7 @@ The overview and action summary below are synced from the **Sqyre** application 
 
 {{< upstream_readme_features >}}
 
-For **how to use the window** (toolbar, add/edit rules, copy/paste, execution), see [Docs](/docs/). For a walkthrough with GIFs, see [Demo](/demo/).
+For **how to use the window** (toolbar, add/edit rules, copy/paste, execution), see [Docs](/docs/). For screenshots and the browser editor, see [Demo](/demo/).
 
 ## Action details
 
@@ -72,12 +72,6 @@ Five columns — **Mouse & Keyboard**, **Detection**, **Variables**, **Loop flow
 
 ![Add action picker](images/sqyre/add-action-picker.png)
 
-### Action dialogs
+### Data editor
 
-| Category | |
-|----------|---|
-| Mouse & keyboard | [Move](images/sqyre/action-dialog-move.png) · [Click](images/sqyre/action-dialog-click.png) · [Key](images/sqyre/action-dialog-key.png) · [Type](images/sqyre/action-dialog-type.png) |
-| Detection | [Image search](images/sqyre/action-dialog-imagesearch.png) · [OCR](images/sqyre/action-dialog-ocr.png) · [Find pixel](images/sqyre/action-dialog-findpixel.png) |
-| Variables | [Set](images/sqyre/action-dialog-setvariable.png) · [Calculate](images/sqyre/action-dialog-calculate.png) · [For each row](images/sqyre/action-dialog-foreachrow.png) · [Save to](images/sqyre/action-dialog-savevariable.png) |
-| Loop flow | [Loop](images/sqyre/action-dialog-loop.png) |
-| Miscellaneous | [Wait](images/sqyre/action-dialog-wait.png) · [Focus window](images/sqyre/action-dialog-focuswindow.png) · [Run macro](images/sqyre/action-dialog-runmacro.png) |
+![Data editor](images/sqyre/data-editor.png)

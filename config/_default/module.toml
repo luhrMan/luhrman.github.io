@@ -47,6 +47,11 @@
   source = "node_modules/@thulite/inline-svg/layouts"
   target = "layouts"
 
+# Override @thulite/images render-image (must mount after the package layouts).
+[[mounts]]
+  source = "layouts/_markup"
+  target = "layouts/_markup"
+
 ## i18n
 [[mounts]]
   source = "node_modules/@thulite/doks-core/i18n"
