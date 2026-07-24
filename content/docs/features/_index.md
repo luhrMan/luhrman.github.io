@@ -2,7 +2,7 @@
 title: "Features"
 description: "Action types, screenshots, and tech stack for the Sqyre macro builder."
 date: 2025-03-09
-lastmod: 2026-07-20T00:00:00Z
+lastmod: 2026-07-24T00:00:00Z
 draft: false
 weight: 10
 toc: true

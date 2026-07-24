@@ -1,0 +1,101 @@
+# Once a day, compare the latest Sqyre *-wasm.zip release with the tag
+# currently published on this site (/wasm/RELEASE.txt). If they differ,
+# dispatch the Hugo site workflow so it re-syncs and redeploys.
+
+name: Check WASM release
+
+on:
+  schedule:
+    # Daily at 12:00 UTC
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write
+
+concurrency:
+  group: check-wasm-release
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resolve latest WASM release tag
+        id: latest
+        env:
+          # Same default as scripts/sync-wasm-demo.sh; override with repo var SQYRE_RELEASES_REPO.
+          REPO: ${{ vars.SQYRE_RELEASES_REPO }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          REPO="${REPO:-luhrMan/Sqyre}"
+          API="https://api.github.com/repos/${REPO}/releases?per_page=20"
+          ASSET_JSON="$(
+            curl -fsSL \
+              -H "Accept: application/vnd.github+json" \
+              -H "Authorization: Bearer ${GH_TOKEN}" \
+              -H "User-Agent: sqyre-io-wasm-check" \
+              "${API}" | python3 -c '
+import json, sys
+releases = json.load(sys.stdin)
+for rel in releases:
+    if rel.get("draft"):
+        continue
+    for asset in rel.get("assets") or []:
+        name = asset.get("name") or ""
+        if name.endswith("-wasm.zip"):
+            print(json.dumps({
+                "tag": rel.get("tag_name") or "",
+                "name": name,
+            }))
+            sys.exit(0)
+sys.exit("error: no *-wasm.zip asset found in recent releases")
+'
+          )"
+          TAG="$(python3 -c 'import json,sys; print(json.load(sys.stdin)["tag"])' <<<"${ASSET_JSON}")"
+          NAME="$(python3 -c 'import json,sys; print(json.load(sys.stdin)["name"])' <<<"${ASSET_JSON}")"
+          echo "tag=${TAG}" >> "${GITHUB_OUTPUT}"
+          echo "asset=${NAME}" >> "${GITHUB_OUTPUT}"
+          echo "Latest WASM release: ${TAG} (${NAME})"
+
+      - name: Read deployed WASM tag from live site
+        id: deployed
+        env:
+          # Override with repo variable SQYRE_SITE_URL if the Pages URL is custom.
+          SITE_URL: ${{ vars.SQYRE_SITE_URL }}
+          OWNER: ${{ github.repository_owner }}
+        run: |
+          set -euo pipefail
+          SITE_URL="${SITE_URL:-https://${OWNER}.github.io}"
+          RELEASE_URL="${SITE_URL%/}/wasm/RELEASE.txt"
+          echo "Fetching ${RELEASE_URL}"
+          if ! BODY="$(curl -fsSL --retry 3 --retry-delay 2 "${RELEASE_URL}")"; then
+            echo "warning: could not fetch deployed RELEASE.txt; treating as unknown" >&2
+            echo "tag=" >> "${GITHUB_OUTPUT}"
+            exit 0
+          fi
+          TAG="$(printf '%s\n' "${BODY}" | awk -F': ' '/^tag:/{print $2; exit}')"
+          echo "tag=${TAG}" >> "${GITHUB_OUTPUT}"
+          echo "Deployed WASM tag: ${TAG:-<unknown>}"
+
+      - name: Trigger Hugo rebuild if WASM is newer
+        env:
+          GH_TOKEN: ${{ github.token }}
+          LATEST: ${{ steps.latest.outputs.tag }}
+          DEPLOYED: ${{ steps.deployed.outputs.tag }}
+          ASSET: ${{ steps.latest.outputs.asset }}
+        run: |
+          set -euo pipefail
+          if [[ -z "${LATEST}" ]]; then
+            echo "error: latest WASM tag empty" >&2
+            exit 1
+          fi
+          if [[ "${LATEST}" == "${DEPLOYED}" ]]; then
+            echo "Already up to date (${LATEST}). No rebuild."
+            exit 0
+          fi
+          echo "New WASM build detected: deployed='${DEPLOYED}' latest='${LATEST}' (${ASSET})"
+          gh workflow run "Hugo site" --repo "${{ github.repository }}"
+          echo "Dispatched Hugo site workflow."

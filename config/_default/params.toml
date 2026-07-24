@@ -3,8 +3,8 @@ title = "Sqyre — Desktop macro builder"
 
 # GitHub Releases on the homepage (owner/repo). Leave unset to derive from data/sqyre_meta.yaml repo_url.
 # releasesRepo = "luhrMan/sqyre"
-description = "Desktop macro builder written in Go. Automate mouse, keyboard, and screen-aware steps with a visual action tree — Fyne, Robotgo, Tesseract, and OpenCV."
-footer = 'Desktop macro builder written in Go — <a class="text-muted" href="https://github.com/luhrMan/sqyre">Sqyre</a>.'
+description = "Desktop macro builder written in Rust. Automate mouse, keyboard, and screen-aware steps with a visual action tree — egui, PureCV, and Tesseract."
+footer = 'Desktop macro builder written in Rust — <a class="text-muted" href="https://github.com/luhrMan/sqyre">Sqyre</a>.'
 images = ["favicon.png"]
 
 # mainSections

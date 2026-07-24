@@ -18,7 +18,7 @@ params:
     startUrl: "/docs/features/"
 ---
 
-Sqyre is a desktop macro builder: each **macro** is an ordered **tree of actions** you edit in a Fyne window. Macros, images, masks, and data tables live under **`~/.sqyre/`**. This page explains the main screen, how actions are added and edited, and how branching actions behave when you run a macro.
+Sqyre is a desktop macro builder: each **macro** is an ordered **tree of actions** you edit in an egui window. Macros, images, masks, and data tables live under **`~/.sqyre/`**. This page explains the main screen, how actions are added and edited, and how branching actions behave when you run a macro.
 
 For the tech stack overview, see [Features](/docs/features/). For compiling the app, see [Build](/docs/build/).
 
@@ -27,7 +27,7 @@ For the tech stack overview, see [Features](/docs/features/). For compiling the 
 - **Macro tabs** — Each open macro appears as a tab. Use **+** (new tab) to create a macro; the name in the toolbar is saved when you submit it.
 - **Macro list** (toolbar button with the list icon) — Browse all saved macros, open one in a tab, or delete a macro (with confirmation).
 - **Toolbar (top row)** — Unselect, move selection up/down in the list, copy and paste the selected action, **play** the current macro, macro name field, and macro picker.
-- **Toolbar (bottom row)** — **Global delay** (milliseconds) applied between Robotgo mouse/keyboard operations, live **mouse X/Y**, **hotkey** display, **trigger** (on press vs on release), and **record** for the hotkey chord.
+- **Toolbar (bottom row)** — **Global delay** (milliseconds) applied between mouse/keyboard operations, live **mouse X/Y**, **hotkey** display, **trigger** (on press vs on release), and **record** for the hotkey chord.
 - **Menu bar** — **Settings → Computer info** (screen and monitor sizes), **Data Editor** (points, search areas, items, programs, etc.), **User Settings**. Under **Macro**: **Add Action…** (picker dialog) and **Add Blank Action** (submenus by category).
 - **Runtime variables** — While a macro runs, a panel shows live variable values.
 

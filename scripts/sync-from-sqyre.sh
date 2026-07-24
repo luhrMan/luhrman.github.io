@@ -29,8 +29,15 @@ fi
 COMMIT="$(git -C "${SRC}" rev-parse HEAD 2>/dev/null || echo unknown)"
 SYNCED="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 VERSION="unknown"
-if [[ -f "${SRC}/FyneApp.toml" ]]; then
-  VERSION="$(grep -E '^Version\s*=' "${SRC}/FyneApp.toml" | head -1 | sed 's/.*=\s*"\([^"]*\)".*/\1/' || true)"
+CARGO_TOML=""
+if [[ -f "${SRC}/crates/sqyre-app/Cargo.toml" ]]; then
+  CARGO_TOML="${SRC}/crates/sqyre-app/Cargo.toml"
+elif [[ -f "${SRC}/Cargo.toml" ]]; then
+  CARGO_TOML="${SRC}/Cargo.toml"
+fi
+if [[ -n "${CARGO_TOML}" ]]; then
+  VERSION="$(grep -E '^version\s*=' "${CARGO_TOML}" | head -1 | sed 's/.*=\s*"\([^"]*\)".*/\1/' || true)"
+  [[ -n "${VERSION}" ]] || VERSION="unknown"
 fi
 REPO_URL="${SQYRE_REPO_URL:-}"
 if [[ -z "${REPO_URL}" && -n "${SQYRE_REPO_PATH:-}" ]]; then
@@ -45,6 +52,7 @@ REPO_BLOB="${REPO_URL}/blob/main"
 rewrite_for_site() {
   sed \
     -e 's|docs/images/|images/sqyre/|g' \
+    -e 's|crates/sqyre-app/assets/icons/sqyre.svg|/favicon.svg|g' \
     -e 's|internal/assets/icons/sqyre.svg|/favicon.svg|g' \
     -e 's|(docs/DEVELOPING.md)|(#developing)|g' \
     -e 's|\[docs/DEVELOPING.md\](docs/DEVELOPING.md)|[Developing](#developing)|g' \
@@ -75,7 +83,7 @@ rewrite_for_site <"${README_RAW}" >"${ASSETS_UP}/README.md"
   echo ""
   echo "## Run"
   echo ""
-  echo "After building, launch \`./bin/sqyre\` (Linux) or the Windows binary from \`bin/windows-amd64/\`. For creating and running macros, see [Docs](/docs/)."
+  echo "After building, launch \`./bin/sqyre\` (Linux) or \`./bin/sqyre.exe\` (Windows). For creating and running macros, see [Docs](/docs/)."
 } | rewrite_for_site >"${ASSETS_UP}/README.build.md"
 
 {
@@ -88,8 +96,8 @@ if [[ -f "${SRC}/docs/DEVELOPING.md" ]]; then
   rewrite_for_site <"${SRC}/docs/DEVELOPING.md" >"${ASSETS_UP}/DEVELOPING.md"
 fi
 
-if [[ -f "${SRC}/FyneApp.toml" ]]; then
-  cp "${SRC}/FyneApp.toml" "${ASSETS_UP}/FyneApp.toml"
+if [[ -n "${CARGO_TOML}" ]]; then
+  cp "${CARGO_TOML}" "${ASSETS_UP}/Cargo.toml"
 fi
 
 if [[ -d "${SRC}/docs/images" ]]; then
