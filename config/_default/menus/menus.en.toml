@@ -1,26 +1,26 @@
 [[main]]
   name = "Docs"
-  url = "/docs/features/"
+  url = "docs/features/"
   weight = 10
 
 [[main]]
   name = "Demo"
-  url = "/wasm/"
+  url = "wasm/"
   weight = 12
 
 [[main]]
   name = "Downloads"
-  url = "/#downloads"
+  url = "#downloads"
   weight = 15
 
 [[main]]
   name = "Donate"
-  url = "/donate/"
+  url = "donate/"
   weight = 17
 
 [[main]]
   name = "Blog"
-  url = "/blog/"
+  url = "blog/"
   weight = 20
 
 [[social]]
@@ -31,5 +31,5 @@
 
 [[footer]]
   name = "Privacy Policy"
-  url = "/privacy/"
+  url = "privacy/"
   weight = 10

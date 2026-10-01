@@ -1,13 +1,17 @@
 {
-  "name": "Sqyre Hugo site",
+  "name": "luhrman.dev site",
   "build": {
     "dockerfile": "Dockerfile",
     "context": ".."
   },
-  "forwardPorts": [1313],
+  "forwardPorts": [1313, 8080],
   "portsAttributes": {
     "1313": {
-      "label": "Hugo server",
+      "label": "Hugo server (Sqyre)",
+      "onAutoForward": "notify"
+    },
+    "8080": {
+      "label": "Production preview (/ and /sqyre/)",
       "onAutoForward": "notify"
     }
   },
@@ -23,6 +27,6 @@
       }
     }
   },
-  "postCreateCommand": "chmod +x scripts/sync-from-sqyre.sh 2>/dev/null || true",
+  "postCreateCommand": "chmod +x scripts/*.sh && npm ci",
   "remoteUser": "vscode"
 }

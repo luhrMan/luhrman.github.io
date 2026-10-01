@@ -1,10 +1,13 @@
-# Hugo Extended — keep HUGO_VERSION in sync with .github/workflows/hugo.yml
+# Hugo Extended + Node — keep versions in sync with .github/workflows/hugo.yml
 FROM mcr.microsoft.com/devcontainers/base:jammy
 
 ARG HUGO_VERSION=0.156.0
+ARG NODE_MAJOR=24
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-  && apt-get install -y --no-install-recommends curl ca-certificates \
+  && apt-get install -y --no-install-recommends curl ca-certificates git python3 unzip \
+  && curl -fsSL "https://deb.nodesource.com/setup_${NODE_MAJOR}.x" | bash - \
+  && apt-get install -y --no-install-recommends nodejs \
   && ARCH="$(dpkg --print-architecture)" \
   && case "$ARCH" in \
        amd64) HUGO_DEB_ARCH=amd64 ;; \
