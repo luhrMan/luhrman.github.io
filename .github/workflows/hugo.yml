@@ -56,8 +56,12 @@ jobs:
           hugo-version: "0.156.0"
           extended: true
 
+      # Sqyre is served from /sqyre/; site-root/ holds the luhrman.dev landing page.
       - name: Build
-        run: hugo --minify -e production
+        run: hugo --minify -e production --destination public/sqyre
+
+      - name: Add luhrman.dev root
+        run: cp -r site-root/. public/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

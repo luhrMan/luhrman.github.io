@@ -1,3 +1,3 @@
-# Overrides for production environment (canonical host: sqyre.io)
-baseURL = "https://sqyre.io/"
+# Overrides for production environment (canonical host: www.luhrman.dev/sqyre)
+baseURL = "https://www.luhrman.dev/sqyre/"
 canonifyURLs = true

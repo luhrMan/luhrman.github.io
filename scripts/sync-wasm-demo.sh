@@ -10,7 +10,7 @@ API="https://api.github.com/repos/${REPO}/releases?per_page=20"
 TMP="$(mktemp -d)"
 trap 'rm -rf "${TMP}"' EXIT
 
-CURL_HEADERS=(-H "Accept: application/vnd.github+json" -H "User-Agent: sqyre-io-hugo-sync")
+CURL_HEADERS=(-H "Accept: application/vnd.github+json" -H "User-Agent: luhrman-dev-hugo-sync")
 if [[ -n "${GITHUB_TOKEN:-}${GH_TOKEN:-}" ]]; then
   CURL_HEADERS+=(-H "Authorization: Bearer ${GITHUB_TOKEN:-${GH_TOKEN}}")
 fi
