@@ -27,6 +27,6 @@
       }
     }
   },
-  "postCreateCommand": "chmod +x scripts/*.sh && npm ci",
+  "postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && chmod +x scripts/*.sh && npm ci",
   "remoteUser": "vscode"
 }
