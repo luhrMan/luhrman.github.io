@@ -3,7 +3,7 @@
 # at the root and the Sqyre Hugo site under public/sqyre/.
 #
 #   ./scripts/build-site.sh            # production build (https://www.luhrman.dev/sqyre/)
-#   ./scripts/build-site.sh --preview  # build for http://localhost:8080 and serve public/
+#   ./scripts/build-site.sh --preview  # host-independent build, served on http://localhost:8080
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -12,7 +12,8 @@ cd "${ROOT}"
 
 HUGO_ARGS=(--minify -e production --destination public/sqyre)
 if [[ "${1:-}" == "--preview" ]]; then
-  HUGO_ARGS+=(--baseURL "http://localhost:${PORT}/sqyre/")
+  # Path-only base so assets load whatever host/port the preview is reached through.
+  HUGO_ARGS+=(--baseURL "/sqyre/")
 fi
 
 rm -rf public
