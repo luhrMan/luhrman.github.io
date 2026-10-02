@@ -67,7 +67,7 @@ sys.exit("error: no *-wasm.zip asset found in recent releases")
           SITE_URL: ${{ vars.SQYRE_SITE_URL }}
         run: |
           set -euo pipefail
-          SITE_URL="${SITE_URL:-https://www.luhrman.dev/sqyre}"
+          SITE_URL="${SITE_URL:-https://luhrman.dev/sqyre}"
           RELEASE_URL="${SITE_URL%/}/wasm/RELEASE.txt"
           echo "Fetching ${RELEASE_URL}"
           if ! BODY="$(curl -fsSL --retry 3 --retry-delay 2 "${RELEASE_URL}")"; then

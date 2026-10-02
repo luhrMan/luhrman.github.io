@@ -2,7 +2,7 @@
 # Build the full luhrman.dev site into public/: the landing page from site-root/
 # at the root and the Sqyre Hugo site under public/sqyre/.
 #
-#   ./scripts/build-site.sh            # production build (https://www.luhrman.dev/sqyre/)
+#   ./scripts/build-site.sh            # production build (https://luhrman.dev/sqyre/)
 #   ./scripts/build-site.sh --preview  # host-independent build, served on http://localhost:8080
 set -euo pipefail
 
