@@ -17,7 +17,7 @@ fi
 
 echo "Looking up WASM asset on ${REPO} releases…"
 ASSET_JSON="$(
-  curl -fsSL "${CURL_HEADERS[@]}" "${API}" | python3 -c '
+  curl -fsSL --retry 3 --retry-delay 5 "${CURL_HEADERS[@]}" "${API}" | python3 -c '
 import json, sys
 releases = json.load(sys.stdin)
 for rel in releases:
@@ -38,7 +38,7 @@ NAME="$(python3 -c 'import json,sys; print(json.load(sys.stdin)["name"])' <<<"${
 URL="$(python3 -c 'import json,sys; print(json.load(sys.stdin)["url"])' <<<"${ASSET_JSON}")"
 
 echo "Downloading ${NAME} (${TAG})…"
-curl -fsSL "${CURL_HEADERS[@]}" -L -o "${TMP}/wasm.zip" "${URL}"
+curl -fsSL --retry 3 --retry-delay 5 "${CURL_HEADERS[@]}" -L -o "${TMP}/wasm.zip" "${URL}"
 
 rm -rf "${OUT_DIR}"
 mkdir -p "${OUT_DIR}"

@@ -37,6 +37,8 @@ jobs:
         run: ./scripts/sync-from-sqyre.sh
 
       - name: Sync WASM demo from GitHub Releases
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./scripts/sync-wasm-demo.sh
 
       # Layouts, assets, and static files come from @thulite/* packages (see
