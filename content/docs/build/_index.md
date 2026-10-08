@@ -1,6 +1,6 @@
 ---
 title: "Build"
-description: "Install and build Sqyre from source (synced from the application repo)."
+description: "Install Sqyre on Linux or Windows, or build the macro builder from source with Rust. Step-by-step install and compile instructions for each platform."
 date: 2025-03-09
 lastmod: 2026-06-30T00:00:00Z
 draft: false
@@ -10,7 +10,7 @@ aliases:
   - /build/
 params:
   seo:
-    title: ""
+    title: "Install and Build Sqyre on Linux and Windows"
     description: ""
 ---
 

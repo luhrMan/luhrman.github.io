@@ -1,12 +1,12 @@
 ---
 title: "Demo"
-description: "Try the Sqyre browser editor, or browse screenshots of the main window, action picker, and data editor."
+description: "Try the Sqyre macro editor in your browser with the free WASM demo, or browse screenshots of the main window, action picker, and data editor."
 date: 2026-04-01T00:00:00Z
 lastmod: 2026-07-20T00:00:00Z
 draft: false
 params:
   seo:
-    title: ""
+    title: "Sqyre Demo — Try the Macro Editor in Your Browser"
     description: ""
     canonical: ""
     robots: ""

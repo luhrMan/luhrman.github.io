@@ -1,6 +1,6 @@
 ---
 title: "Donate"
-description: "Support Sqyre monetarily, reputationaly, or laborously; star the repo, scan the wallet QR, or contribute code and docs."
+description: "Support Sqyre, the free open-source macro builder: star the repo on GitHub, sponsor development, donate Monero, or contribute code and docs."
 date: 2026-04-02T00:00:00Z
 lastmod: 2026-04-02T00:00:00Z
 draft: false

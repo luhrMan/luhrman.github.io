@@ -11,12 +11,15 @@ tags: []
 contributors: []
 pinned: false
 homepage: false
+sitemap:
+  disable: true
+sitemap_exclude: true
 params:
   seo:
     title: "" # custom title (optional)
     description: "" # custom description (recommended)
     canonical: "" # custom canonical URL (optional)
-    robots: "" # custom robot tags (optional)
+    robots: "noindex" # custom robot tags (optional)
 ---
 
 Effective announcements serve different reader needs:

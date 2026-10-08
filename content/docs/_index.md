@@ -1,6 +1,6 @@
 ---
 title: "Docs"
-description: "How to use the Sqyre GUI, build macros from actions, and compile from source."
+description: "Sqyre documentation: learn how to use the GUI, build macros from mouse, keyboard, and screen-detection actions, and compile the app from source."
 summary: ""
 date: 2025-03-09T00:00:00Z
 draft: false

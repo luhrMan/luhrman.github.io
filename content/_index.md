@@ -1,13 +1,13 @@
 ---
 title: "Sqyre"
-description: "Desktop macro builder — automate mouse, keyboard, and screen-aware steps with a visual tree editor."
+description: "Sqyre is a free, open-source desktop macro builder for Linux and Windows. Automate mouse, keyboard, and screen-aware tasks with a visual action tree."
 lead: "Build and run macros without writing code. Each macro is a tree of actions: loops and branches for flow control, detection when the screen matters, and leaf steps for concrete input."
 date: 2025-04-01T00:00:00Z
 lastmod: 2026-07-24T00:00:00Z
 draft: false
 params:
   seo:
-    title: ""
+    title: "Sqyre — Free, open-source macro builder for Linux and Windows"
     description: ""
     canonical: ""
     robots: ""

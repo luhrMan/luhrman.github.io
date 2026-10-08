@@ -1,6 +1,6 @@
 ---
 title: "Blog"
-description: "Read product updates, release highlights, and practical tips that explain what’s new, why it matters, and how to get the most value from this project."
+description: "Sqyre blog: release highlights, product updates, and practical tips for automating desktop tasks with the free, open-source Sqyre macro builder."
 summary: ""
 date: 2023-09-07T16:21:44+02:00
 lastmod: 2023-09-07T16:21:44+02:00

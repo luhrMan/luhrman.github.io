@@ -4,3 +4,46 @@
   <link rel="icon" href="{{ .RelPermalink }}" type="image/svg+xml" sizes="any">
   {{- end }}
 {{- end }}
+
+{{- if and site.Params.images (not .Params.images) }}
+  <meta property="og:image:alt" content="Screenshot of the Sqyre macro editor">
+{{- end }}
+
+{{- if .IsHome }}
+  {{- $meta := site.Data.sqyre_meta }}
+  {{- $repo := or $meta.repo_url "https://github.com/luhrMan/sqyre" }}
+  {{- $screenshots := slice }}
+  {{- range site.Params.images }}
+    {{- $screenshots = $screenshots | append (absURL .) }}
+  {{- end }}
+  {{- $app := dict
+    "@context" "https://schema.org"
+    "@type" "SoftwareApplication"
+    "name" "Sqyre"
+    "alternateName" "Sqyre macro builder"
+    "description" site.Params.description
+    "url" .Permalink
+    "applicationCategory" "UtilitiesApplication"
+    "applicationSubCategory" "Desktop automation"
+    "operatingSystem" "Linux, Windows"
+    "isAccessibleForFree" true
+    "offers" (dict "@type" "Offer" "price" "0" "priceCurrency" "USD")
+    "downloadUrl" (printf "%s/releases/latest" $repo)
+    "installUrl" (printf "%s/releases/latest" $repo)
+    "image" (absURL "favicon-512x512.png")
+    "screenshot" $screenshots
+    "programmingLanguage" "Rust"
+    "featureList" (slice
+      "Visual tree editor for building macros without code"
+      "Mouse and keyboard automation"
+      "Image search and OCR for screen-aware automation"
+      "Loops, conditional branches, and nested macros"
+      "Runs locally; macros stay on your machine")
+    "sameAs" (slice $repo)
+    "author" (dict "@type" "Person" "name" "luhrMan" "url" "https://github.com/luhrMan")
+  }}
+  {{- with $meta.version }}
+    {{- $app = merge $app (dict "softwareVersion" .) }}
+  {{- end }}
+  <script type="application/ld+json">{{ $app | jsonify | safeJS }}</script>
+{{- end }}

@@ -1,6 +1,6 @@
 ---
 title: "Privacy Policy"
-description: "Learn how we collect, use, and protect your personal data, what rights you have over your information, and how to contact us with questions."
+description: "Sqyre privacy policy: the macro builder runs entirely on your own machine, and your macros and data stay local under ~/.sqyre/."
 summary: ""
 date: 2026-04-01T17:19:07+02:00
 lastmod: 2026-04-01T15:33:59+01:00

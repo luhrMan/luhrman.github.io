@@ -3,9 +3,11 @@ title = "Sqyre — Desktop macro builder"
 
 # GitHub Releases on the homepage (owner/repo). Leave unset to derive from data/sqyre_meta.yaml repo_url.
 # releasesRepo = "luhrMan/sqyre"
-description = "Desktop macro builder written in Rust. Automate mouse, keyboard, and screen-aware steps with a visual action tree — egui, PureCV, and Tesseract."
+description = "Sqyre is a free, open-source desktop macro builder for Linux and Windows. Automate mouse, keyboard, and screen-aware tasks with a visual action tree."
 footer = 'Desktop macro builder written in Rust — <a class="text-muted" href="https://github.com/luhrMan/sqyre">Sqyre</a>.'
-images = ["favicon.png"]
+# Social preview image (og:image / twitter:image). Paths are relative to the site root;
+# assets/favicon.png is not published as-is, so don't point at it here.
+images = ["images/sqyre/main-window.png"]
 
 # mainSections
 mainSections = ["docs"]
@@ -141,10 +143,10 @@ mathEngine = "KaTeX" # "KaTeX" (default) or "MathJax"
     svgIcon = "favicon.svg" # favicon.svg (default)
   [seo.schemas]
     type = "Organization" # Organization (default) or Person
-    logo = "favicon.png" # 512×512 from upstream Sqyre icon
+    logo = "favicon-512x512.png" # generated from assets/favicon.png by seo/favicons
     name = "Sqyre" # Name of Organization or Person
     sameAs = ["https://github.com/luhrMan/sqyre"]
-    images = ["favicon.png"] # ["cover.png"] (default)
+    images = ["images/sqyre/main-window.png"] # ["cover.png"] (default)
     article = [] # Article sections
     newsArticle = [] # NewsArticle sections
     blogPosting = ["blog"] # BlogPosting sections

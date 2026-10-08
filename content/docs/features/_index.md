@@ -1,6 +1,6 @@
 ---
 title: "Features"
-description: "Action types, screenshots, and tech stack for the Sqyre macro builder."
+description: "Explore Sqyre's macro actions: mouse and keyboard input, image search, OCR, pixel detection, loops, and if branches, plus screenshots and the Rust tech stack."
 date: 2025-03-09
 lastmod: 2026-07-24T00:00:00Z
 draft: false
@@ -10,7 +10,7 @@ aliases:
   - /features/
 params:
   seo:
-    title: ""
+    title: "Sqyre Features — Mouse, Keyboard, OCR and Image-Search Macros"
     description: ""
 ---
 

@@ -1,0 +1,15 @@
+{{- /* @thulite/seo's sitemap.xml ranges over the home page's .Pages, which omits the
+home page itself and nested docs pages. List every indexable page instead. */ -}}
+{{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {{- range site.Pages }}
+    {{- if and .Permalink (ne .Sitemap.Disable true) (ne .Params.sitemap_exclude true) (not (in (slice "taxonomy" "term") .Kind)) (not (strings.Contains (or .Params.seo.robots "") "noindex")) }}
+  <url>
+    <loc>{{ .Permalink }}</loc>{{ if not .Lastmod.IsZero }}
+    <lastmod>{{ safeHTML (.Lastmod.Format "2006-01-02T15:04:05-07:00") }}</lastmod>{{ end }}{{ with .Sitemap.ChangeFreq }}
+    <changefreq>{{ . }}</changefreq>{{ end }}{{ if ge .Sitemap.Priority 0.0 }}
+    <priority>{{ if .IsHome }}1.0{{ else }}{{ .Sitemap.Priority }}{{ end }}</priority>{{ end }}
+  </url>
+    {{- end }}
+  {{- end }}
+</urlset>
